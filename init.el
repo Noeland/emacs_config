@@ -43,7 +43,7 @@
 (require 'parse-time)
 (require 'moe-theme)
 (setq-local hourOfTheDay (nth 2 (parse-time-string (current-time-string))))
-(if (> hourOfTheDay 18) (load-theme 'moe-dark t) (load-theme 'moe-light t))
+(if (>= hourOfTheDay 18) (load-theme 'moe-dark t) (load-theme 'moe-light t))
 
 (setq-default fill-column 80)
 
