@@ -21,6 +21,7 @@
 			    counsel
 			    smartparens
 			    org
+			    popwin
 			    ) "Default packages" )
 
 (setq-default package-selected-packages huanming/packages)
@@ -39,6 +40,8 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/moe-theme.el/")
 (add-to-list 'load-path "~/.emacs.d/moe-theme.el/")
+
+(auto-revert-mode t)
 
 (require 'parse-time)
 (require 'moe-theme)
@@ -119,6 +122,9 @@
 
 ;; set gdb address
 (setq gud-gdb-command-name "/usr/local/bin/gdb -i=mi --annotate=3")
+
+(require 'popwin)
+(popwin-mode t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
