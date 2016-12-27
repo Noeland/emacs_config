@@ -3,22 +3,11 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 (require 'init-packages)
+(require 'init-ui)
 
 (auto-revert-mode t)
 
 (setq-default fill-column 80)
-
-(tool-bar-mode -1)
-
-(scroll-bar-mode -1)
-
-(global-linum-mode 1)
-
-(setq-default cursor-type 'bar)
-
-(setq inhibit-splash-screen 1)
-
-(set-face-attribute 'default nil :height 170)
 
 (defun open-init-file()
   (interactive)
@@ -42,17 +31,6 @@
 
 (delete-selection-mode t)
 
-(setq initial-frame-alist (quote ((fullscreen . maximized))))
-
-(add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
-(add-hook 'c-mode-hook 'show-paren-mode)
-
-(global-hl-line-mode)
-
-
-
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
 
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)

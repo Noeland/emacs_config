@@ -1,7 +1,5 @@
 
 (when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
   (add-to-list 'package-archives '("melpa" .  "http://melpa.org/packages/") t)
   )
 
@@ -37,7 +35,6 @@
 (require 'hungry-delete)
 (global-hungry-delete-mode)
 
-(require 'smartparens-config)
 (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (add-hook 'c-mode-hook 'smartparens-mode)
 
@@ -45,5 +42,8 @@
 
 (require 'popwin)
 (popwin-mode t)
+
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
 
 (provide 'init-packages)
