@@ -87,6 +87,7 @@
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
 
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
+(add-hook 'c-mode-hook 'show-paren-mode)
 
 (global-hl-line-mode)
 
@@ -116,6 +117,7 @@
 
 (require 'smartparens-config)
 (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
+(add-hook 'c-mode-hook 'smartparens-mode)
 
 (setq org-agenda-files '("~/Documents/org"))
 (global-set-key (kbd "C-c a") 'org-agenda)
