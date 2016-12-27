@@ -1,52 +1,10 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+(package-initialize)
 
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("melpa" .  "http://melpa.org/packages/") t)
-  )
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
-(require 'cl)
-
-;; add whatever packages you want here
-
-(defvar huanming/packages '(
-			    company
-			    moe-theme
- 			    hungry-delete
-			    swiper
-			    counsel
-			    smartparens
-			    org
-			    popwin
-			    ) "Default packages" )
-
-(setq-default package-selected-packages huanming/packages)
-
-(defun huanming/packages-installed-p ()
-  (loop for pkg in huanming/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
-  
-  (unless (huanming/packages-installed-p)              ;; If this is not ture
-    (message "%s" "Refresing packages database...")    ;; Send msg and resfresh
-    (package-refresh-contents)
-    (dolist (pkg huanming/packages)                    ;; For all pkg in huanming/packages
-      (when (not (package-installed-p pkg))            ;; if it is not installed
-	(package-install pkg))))                      ;; Install it
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/moe-theme.el/")
-(add-to-list 'load-path "~/.emacs.d/moe-theme.el/")
+(require 'init-packages)
 
 (auto-revert-mode t)
-
-(require 'parse-time)
-(require 'moe-theme)
-(setq-local hourOfTheDay (nth 2 (parse-time-string (current-time-string))))
-(if (>= hourOfTheDay 18) (load-theme 'moe-dark t) (load-theme 'moe-light t))
 
 (setq-default fill-column 80)
 
@@ -70,7 +28,7 @@
 
 (setq make-backup-files nil)
 
-(global-company-mode t)
+(setq ring-bell-function 'ignore)
 
 (require 'org)
 (setq org-src-fontify-natively t)
@@ -91,8 +49,7 @@
 
 (global-hl-line-mode)
 
-(require 'hungry-delete)
-(global-hungry-delete-mode)
+
 
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
@@ -115,9 +72,7 @@
 (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
 (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
 
-(require 'smartparens-config)
-(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
-(add-hook 'c-mode-hook 'smartparens-mode)
+
 
 (setq org-agenda-files '("~/Documents/org"))
 (global-set-key (kbd "C-c a") 'org-agenda)
@@ -125,8 +80,7 @@
 ;; set gdb address
 (setq gud-gdb-command-name "/usr/local/bin/gdb -i=mi --annotate=3")
 
-(require 'popwin)
-(popwin-mode t)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
