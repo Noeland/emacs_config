@@ -16,6 +16,7 @@
 			    smartparens
 			    org
 			    popwin
+			    utop
 			    ) "Default packages" )
 
 (setq-default package-selected-packages huanming/packages)
@@ -38,6 +39,7 @@
 (require 'smartparens-config)
 (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (add-hook 'c-mode-hook 'smartparens-mode)
+(add-hook 'c++-mode 'smartparens-mode)
 
 (global-company-mode t)
 
@@ -46,5 +48,9 @@
 
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
+
+(setq utop-command "opam config exec -- utop -emacs")
+(autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
+(add-hook 'tuareg-mode-hook 'utop-minor-mode)
 
 (provide 'init-packages)
