@@ -18,6 +18,7 @@
 			    popwin
 			    utop
 			    opam
+			    exec-path-from-shell
 			    ) "Default packages" )
 
 (setq-default package-selected-packages huanming/packages)
@@ -55,5 +56,8 @@
 (add-hook 'tuareg-mode-hook 'utop-minor-mode)
 
 (opam-init)
+
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 (provide 'init-packages)
