@@ -75,5 +75,9 @@
   (add-hook 'caml-mode-hook 'merlin-mode t)))
 
 (add-hook 'tuareg-mode-hook 'merlin-mode)
+(add-hook 'tuareg-mode-hook (lambda () (electric-indent-local-mode -1)))
+(add-hook 'merlin-mode-hook (lambda () (electric-indent-local-mode -1)))
+(add-hook 'caml-mode-hook (lambda () (electric-indent-local-mode -1)))
+
 
 (provide 'init-packages)
