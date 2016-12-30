@@ -17,6 +17,7 @@
 			    org
 			    popwin
 			    utop
+			    opam
 			    ) "Default packages" )
 
 (setq-default package-selected-packages huanming/packages)
@@ -52,5 +53,7 @@
 (setq utop-command "opam config exec -- utop -emacs")
 (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
 (add-hook 'tuareg-mode-hook 'utop-minor-mode)
+
+(opam-init)
 
 (provide 'init-packages)
