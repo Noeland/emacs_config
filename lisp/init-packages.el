@@ -51,6 +51,8 @@
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
 
+
+
 (setq utop-command "opam config exec -- utop -emacs")
 (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
 (add-hook 'tuareg-mode-hook 'utop-minor-mode)
@@ -59,5 +61,19 @@
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+
+;; tuareg config
+(load
+ "/Users/Apple/.opam/system/share/emacs/site-lisp/tuareg-site-file")
+
+;; merlin config
+(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+ (when (and opam-share (file-directory-p opam-share))
+  (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+  (autoload 'merlin-mode "merlin" nil t nil)
+  (add-hook 'tuareg-mode-hook 'merlin-mode t)
+  (add-hook 'caml-mode-hook 'merlin-mode t)))
+
+(add-hook 'tuareg-mode-hook 'merlin-mode)
 
 (provide 'init-packages)
