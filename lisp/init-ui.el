@@ -11,7 +11,7 @@
 (global-linum-mode 1)
 (setq-default cursor-type 'bar)
 (setq inhibit-splash-screen 1)
-(set-face-attribute 'default nil :height 170)
+(set-face-attribute 'default nil :height 180)
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
 (global-hl-line-mode)
 
